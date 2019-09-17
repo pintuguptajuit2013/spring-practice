@@ -1,0 +1,29 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    
+    <bean id="address" class="com.tech.guru.pintu.ioc.model.Address">
+    	<property name="city" value="siwan" />
+    	<property name="zipCode" value="841287" />
+    	<property name="state" value="Bihar" />
+    </bean>
+    
+    <bean id="emp1" class="com.tech.guru.pintu.ioc.model.Employee" init-method="myInit" destroy-method="myDestroy">
+        <property name="eid" value="1" />
+        <property name="ename" value="XYZ" />
+        <property name="eaddress" value="Address1" />
+        <!-- Dependency Injection on Using Setter -->
+        <property name="address"  ref="address"/>
+        
+    </bean>
+    
+    <bean id="emp2" class="com.tech.guru.pintu.ioc.model.Employee" init-method="myInit" destroy-method="myDestroy">
+        <property name="eid" value="2" />
+        <property name="ename" value="XYZ2" />
+        <property name="eaddress" value="Address2" />
+        <!-- Dependency Injection on Using Constructor -->
+         <constructor-arg ref="address"/>
+    </bean>
+    
+</beans>
